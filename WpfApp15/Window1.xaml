@@ -1,0 +1,250 @@
+﻿<Window x:Class="WpfApp15.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Поддержка" Height="800" Width="900"
+        Icon="Image/free-icon-isp-8445730.png" FontFamily="Segoe UI">
+    <Window.Resources>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#F0F4F8" />
+        <SolidColorBrush x:Key="TextBrush" Color="#2D3748" />
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#4A6FFF" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#FF5A8A" />
+        <SolidColorBrush x:Key="HeaderBrush" Color="#E6EEF7" />
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="15,10" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="Width" Value="285" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8"
+                                BorderBrush="#3333FF" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#3250E2" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#283CAD" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ResetButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Background" Value="#718096" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#5F6E82" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#4E596B" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="8,5" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="BorderBrush" Value="#CBD5E0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="8,5" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="BorderBrush" Value="#CBD5E0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#E2E8F0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="RowBackground" Value="White" />
+            <Setter Property="AlternatingRowBackground" Value="#F7FAFC" />
+            <Setter Property="RowHeight" Value="28" />
+            <Setter Property="GridLinesVisibility" Value="Horizontal" />
+            <Setter Property="HorizontalGridLinesBrush" Value="#EDF2F7" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="ResultText">
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="{StaticResource BackgroundBrush}" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="{StaticResource HeaderBrush}" Padding="20,15">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Image/free-icon-isp-8445730.png" Width="48" Height="48" Margin="0,0,20,0" />
+                    <TextBlock Text="Система управления услугами" FontSize="24" FontWeight="Bold" 
+                               Foreground="{StaticResource TextBrush}" VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+
+            <!-- Main Content Area -->
+            <Grid Grid.Row="1" Margin="20,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Left Panel - Main Actions -->
+                <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="15" Margin="0,0,10,0" 
+                        BorderBrush="#E2E8F0" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="Управление данными" FontSize="20" FontWeight="Bold" Margin="0,0,0,15" 
+                                   Foreground="{StaticResource TextBrush}" />
+                        <Button Content="Показать клиентов" Click="LoadClients_Click" />
+                        <Button Content="Показать все услуги" Click="LoadServiceCategories_Click" />
+                        <Button Content="Показать доступное оборудование" Click="LoadAvailableEquipment_Click" />
+                        <Button Content="Показать договоры на услуги" Click="LoadServiceContracts_Click" />
+                        <Button Content="Показать заявки на обслуживание" Click="LoadServiceRequests_Click" />
+                    </StackPanel>
+                </Border>
+
+                <!-- Right Panel - Actions & Diagnostics -->
+                <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="15" Margin="10,0,0,0"
+                        BorderBrush="#E2E8F0" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="Действия с клиентами" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"
+                                   Foreground="{StaticResource TextBrush}" />
+                        <Button Content="Статус договора" Click="ShowContractStatus_Click" />
+                        <Button Content="Оборудование клиента" Click="ShowClientEquipment_Click" />
+                        <Button Content="Проверить ping" Click="CheckPing_Click" />
+                        <Button Content="Изменить статус заявки" Click="ChangeRequestStatus_Click" />
+                        <Button Content="Экспорт данных в Excel" Click="ExportClients_Click" Margin="0,15,0,0" />
+                        <Button Style="{StaticResource ResetButton}" Content="Выход" Click="ExitButton_Click" Margin="0,15,0,0" />
+                        <TextBlock x:Name="ResultTextBlock" Style="{StaticResource ResultText}" Text="" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Search Panel -->
+            <Border Grid.Row="2" Background="White" CornerRadius="10" Margin="20,0,20,15" 
+                    BorderBrush="#E2E8F0" BorderThickness="1">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Поиск и фильтрация" FontSize="16" FontWeight="Bold" 
+                               Foreground="{StaticResource TextBrush}" Margin="0,0,0,10" />
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="SearchField1" Grid.Column="0" Margin="0,0,5,0" />
+                                <TextBox x:Name="SearchValue1" Grid.Column="1" Padding="5" />
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="SearchField2" Grid.Column="0" Margin="0,0,5,0" />
+                                <TextBox x:Name="SearchValue2" Grid.Column="1" Padding="5" />
+                            </Grid>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <Button Content="Поиск" Click="SearchButton_Click" />
+                            <Button Style="{StaticResource ResetButton}" Content="Сбросить" Click="ResetSearch_Click" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- DataGrid Title -->
+            <TextBlock x:Name="DataGridTitle" Grid.Row="3" Text="Клиенты" FontSize="18" FontWeight="Bold" 
+                       Margin="20,10,20,10" Foreground="{StaticResource TextBrush}" />
+
+            <!-- DataGrid -->
+            <Border Grid.Row="4" Background="White" CornerRadius="10" Margin="20,0,20,15" 
+                    BorderBrush="#E2E8F0" BorderThickness="1">
+                <DataGrid x:Name="dataGrid" Margin="8" AutoGenerateColumns="True" IsReadOnly="True"
+                          CanUserAddRows="False" CanUserDeleteRows="False" 
+                          HeadersVisibility="Column" VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto" />
+            </Border>
+
+            <!-- Summary Panel -->
+            <Border Grid.Row="5" Background="White" CornerRadius="10" Margin="20,0,20,15" 
+                    BorderBrush="#E2E8F0" BorderThickness="1">
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Количество записей:" FontWeight="SemiBold" />
+                        <TextBlock x:Name="RecordCountText" Text="0" Margin="0,5,0,0" FontSize="16" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock x:Name="SummaryLabel1" Text="Сумма:" FontWeight="SemiBold" />
+                        <TextBlock x:Name="SummaryValue1" Text="0" Margin="0,5,0,0" FontSize="16" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock x:Name="SummaryLabel2" Text="Среднее:" FontWeight="SemiBold" />
+                        <TextBlock x:Name="SummaryValue2" Text="0" Margin="0,5,0,0" FontSize="16" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>

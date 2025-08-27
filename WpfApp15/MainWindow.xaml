@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApp15.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Авторизация" Height="500" Width="800"
+        Icon="Image/free-icon-isp-8445730.png" FontFamily="Segoe UI"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <ColorAnimation x:Key="BackgroundAnimation" Duration="0:0:0.3"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая сторона с фоном -->
+        <Grid Grid.Column="0" Background="{DynamicResource PrimaryBrush}">
+            <Canvas>
+                <Ellipse Width="600" Height="600" Fill="{DynamicResource SecondaryBrush}" 
+                         Opacity="0.3" Canvas.Left="-250" Canvas.Top="150" />
+                <Ellipse Width="400" Height="400" Fill="{DynamicResource SecondaryBrush}" 
+                         Opacity="0.3" Canvas.Left="-100" Canvas.Top="-100" />
+                <Ellipse Width="500" Height="500" Fill="{DynamicResource SecondaryBrush}" 
+                         Opacity="0.2" Canvas.Left="50" Canvas.Top="250" />
+            </Canvas>
+
+            <StackPanel VerticalAlignment="Center" Margin="30,0">
+                <TextBlock Text="Добро пожаловать" Foreground="{DynamicResource TextBrush}" 
+                           FontSize="40" FontWeight="Light" Margin="0,0,0,10" />
+            </StackPanel>
+        </Grid>
+
+        <!-- Правая сторона с формой -->
+        <Grid Grid.Column="1" Background="{DynamicResource WindowBackgroundBrush}">
+            <Border CornerRadius="5" Background="{DynamicResource FormBackgroundBrush}" Margin="10,50,10,50">
+                <StackPanel VerticalAlignment="Center" Margin="20,0" Width="300">
+                    <TextBlock Text="Логин" Foreground="{DynamicResource TextColorBrush}" FontSize="16" Margin="0,0,0,5" />
+                    <Border CornerRadius="5" Background="{DynamicResource TextInputBrush}" Padding="0">
+                        <TextBox x:Name="UsernameTextBox" 
+                                 BorderThickness="0" 
+                                 Background="Transparent"
+                                 Foreground="{DynamicResource InputTextColorBrush}" Height="38"/>
+                    </Border>
+
+                    <TextBlock Text="Пароль" Foreground="{DynamicResource TextColorBrush}" FontSize="16" Margin="0,10,0,5" />
+                    <Border CornerRadius="5" Background="{DynamicResource TextInputBrush}" Padding="0">
+                        <PasswordBox x:Name="PasswordBox" 
+                                    BorderThickness="0" 
+                                    Background="Transparent" Height="37"/>
+                    </Border>
+
+                    <Button Content="Войти" Style="{DynamicResource SignUpButton}" Click="LoginButton_Click" Height="49" />
+                </StackPanel>
+            </Border>
+            <Button x:Name="ThemeToggleButton" Content="🌙" HorizontalAlignment="Right" Margin="0,10,10,0" 
+                    VerticalAlignment="Top" Click="Button_Click" Height="30" Width="30"
+                    Style="{DynamicResource ThemeToggleButtonStyle}"/>
+        </Grid>
+    </Grid>
+</Window>
